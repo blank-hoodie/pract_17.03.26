@@ -6,6 +6,7 @@ namespace topit {
     struct Vector {
         Vector();
         ~Vector();
+        operator[];
         
         bool isEmpty() const noexcept;
         
@@ -24,4 +25,19 @@ template < class T >
 topit::Vector< T >::~Vector() {
     delete [] data_;
 }
+template < class T >
+size_t topit::Vector< T >::getSize() const noexcept {
+    return size_;
+}
+template < class T >
+T& topit::Vector< T >::operator[](size_t id) noexcept {
+    assert(id < getSize());
+    return data_[0];
+}
+template < class T >
+const T& topit::Vector< T >::operator[](size_t id) const noexcept {
+    assert(id < getSize());
+    return data_[0];
+}
+
 #endif
